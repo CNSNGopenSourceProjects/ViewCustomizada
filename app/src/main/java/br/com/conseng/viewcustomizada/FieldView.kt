@@ -90,8 +90,9 @@ class FieldView : LinearLayout {
                 } else {
                     var espacos = 0
                     var caracteres = 0
-                    for (c in valorDigitado.indices) {
-                        if (c.equals(" ")) {
+                    for (i in valorDigitado.indices) {
+                        var c: Char = valorDigitado.get(i)
+                        if (c.equals(' ')) {
                             espacos++
                         } else {
                             caracteres++
@@ -101,7 +102,10 @@ class FieldView : LinearLayout {
                         resultado = context.getString(R.string.erro_nome_minimo_1_espaco)
                     } else if (caracteres < 5) {
                         resultado = context.getString(R.string.erro_nome_minimo_5_letras)
+                    } else {
+                        resultado = context.getString(R.string.nome_ok)
                     }
+
                 }
             }
             TipoDado.IDADE -> {
@@ -110,11 +114,13 @@ class FieldView : LinearLayout {
                 } else {
                     var idade = 0
                     try {
-                        valorDigitado.toInt()
+                        idade = valorDigitado.toInt()
                         if (idade < 10) {
                             resultado = context.getString(R.string.erro_idade_minima_10_anos)
                         } else if (idade > 120) {
                             resultado = context.getString(R.string.erro_idade_maxima_120_anos)
+                        } else {
+                            resultado = context.getString(R.string.idade_ok)
                         }
                     } catch (e: NumberFormatException) {
                         resultado = context.getString(R.string.erro_idade_invalida)
@@ -128,11 +134,15 @@ class FieldView : LinearLayout {
                     resultado = context.getString(R.string.erro_email_curto)
                 } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(valorDigitado).matches()) {
                     resultado = context.getString(R.string.erro_email_invalido)
+                } else {
+                    resultado = context.getString(R.string.email_ok)
                 }
             }
             else -> {
                 if (valor?.text.isNullOrBlank()) {
                     resultado = context.getString(R.string.erro_faltou_dado)
+                } else {
+                    resultado = context.getString(R.string.valor_ok)
                 }
             }
         }
