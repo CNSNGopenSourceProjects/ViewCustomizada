@@ -25,6 +25,8 @@ class FieldView : LinearLayout {
 
     private fun init() {
         View.inflate(getContext(), R.layout.view_field, this)
+        titulo = txt_titulo
+        valor = txt_valor
     }
 
     private var titulo: TextView? = null
@@ -32,8 +34,6 @@ class FieldView : LinearLayout {
 
     fun setText(nome: String) {
         titulo?.text = nome
-        titulo = txt_titulo
-        valor = txt_valor
     }
 
     fun setHint(aviso: String) {
@@ -83,7 +83,9 @@ class FieldView : LinearLayout {
         val valorDigitado = valor?.text.toString()
         when (meuTipo) {
             TipoDado.NOME -> {
-                if (valorDigitado.length < 6) {
+                if (valor?.text.isNullOrBlank()) {
+                    resultado = context.getString(R.string.erro_sem_nome)
+                } else if (valorDigitado.length < 6) {
                     resultado = context.getString(R.string.erro_nome_curto)
                 } else {
                     var espacos = 0
@@ -103,15 +105,26 @@ class FieldView : LinearLayout {
                 }
             }
             TipoDado.IDADE -> {
-                val idade = valorDigitado.toInt()
-                if (idade < 10) {
-                    resultado = context.getString(R.string.erro_idade_minima_10_anos)
-                } else if (idade > 120) {
-                    resultado = context.getString(R.string.erro_idade_maxima_120_anos)
+                if (valor?.text.isNullOrBlank()) {
+                    resultado = context.getString(R.string.erro_sem_idade)
+                } else {
+                    var idade = 0
+                    try {
+                        valorDigitado.toInt()
+                        if (idade < 10) {
+                            resultado = context.getString(R.string.erro_idade_minima_10_anos)
+                        } else if (idade > 120) {
+                            resultado = context.getString(R.string.erro_idade_maxima_120_anos)
+                        }
+                    } catch (e: NumberFormatException) {
+                        resultado = context.getString(R.string.erro_idade_invalida)
+                    }
                 }
             }
             TipoDado.EMAIL -> {
-                if (valorDigitado.length < 6) {
+                if (valor?.text.isNullOrBlank()) {
+                    resultado = context.getString(R.string.erro_sem_email)
+                } else if (valorDigitado.length < 6) {
                     resultado = context.getString(R.string.erro_email_curto)
                 } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(valorDigitado).matches()) {
                     resultado = context.getString(R.string.erro_email_invalido)

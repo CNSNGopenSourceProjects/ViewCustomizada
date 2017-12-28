@@ -6,19 +6,25 @@
 
     <string name="titulo_nome">Nome:</string>
     <string name="hint_titulo_nome">Entre com o nome aqui...</string>
-
-    <string name="titulo_idade">Idade:</string>
-    <string name="hint_titulo_idade">Entre com a idade aqui...</string>
-
-    <string name="titulo_email">E-mail:</string>
-    <string name="hint_titulo_email">Entre com o e-mail aqui...</string>
-    <string name="erro_faltou_dado">ERRO: nenhum valor foi declarado</string>
+    <string name="erro_sem_nome">ERRO: não foi declarado o nome</string>
     <string name="erro_nome_curto">ERRO: nome muito curto</string>
     <string name="erro_nome_minimo_1_espaco">ERRO: o nome precisa ter pelo menos 1 esspaço</string>
     <string name="erro_nome_minimo_5_letras">ERRO: o nome precisa ter pelo menos 5 caracteres</string>
-    <string name="erro_idade_minima_10_anos">ERRO: a idade não pode ser menos que 10 anos</string>
+
+    <string name="titulo_idade">Idade:</string>
+    <string name="hint_titulo_idade">Entre com a idade aqui...</string>
+    <string name="erro_sem_idade">ERRO: não foi declarada a idade</string>
+    <string name="erro_idade_minima_10_anos">ERRO: a idade não pode ser menor que 10 anos</string>
     <string name="erro_idade_maxima_120_anos">ERRO: a idade não pode ser maior que 120 anos</string>
+    <string name="erro_idade_invalida">Erro: a idade apresenta caracteres inválidos</string>
+
+    <string name="titulo_email">E-mail:</string>
+    <string name="hint_titulo_email">Entre com o e-mail aqui...</string>
+    <string name="erro_sem_email">ERRO: não foi declarado o e-mail</string>
     <string name="erro_email_curto">ERRO: email muito curto</string>
     <string name="erro_email_invalido">ERRO: o endereço de e-mail não é valido</string>
+
+    <string name="erro_faltou_dado">ERRO: nenhum valor foi declarado</string>
+
     <string name="btn_validar_dados">Validar Dados</string>
 </resources>
